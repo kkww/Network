@@ -28,7 +28,7 @@ public class EchoClient {
 					new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true); //true 하면 자동으로 flush(buffer비움)
 			
 			while(true) {
-				System.out.print(">>");
+				System.out.print("input>>");
 				String message = scanner.nextLine();
 				if("exit".equals(message)) {
 					break;
@@ -50,6 +50,7 @@ public class EchoClient {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
+			scanner.close();
 			try {
 				if(socket != null && socket.isClosed() == false)
 					socket.close(); //socket만 종료하면 모두 close 됨
